@@ -3,160 +3,320 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>POWER GYM | Entrenamiento de Élite en Paraguay</title>
-    <link rel="stylesheet" href="style.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <title>POWER GYM | Entrenamiento de Élite</title>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700;900&display=swap" rel="stylesheet">
+    
+    <style>
+        /* --- 1. ESTILOS GENERALES (CSS) --- */
+        :root {
+            --gold: #FFD700;       /* Color Dorado */
+            --black: #111111;      /* Negro Fondo */
+            --dark-grey: #1a1a1a;  /* Gris Oscuro Tarjetas */
+            --white: #ffffff;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Montserrat', sans-serif;
+            background-color: var(--black);
+            color: var(--white);
+            line-height: 1.6;
+            overflow-x: hidden; /* Evita scroll horizontal */
+        }
+
+        a { text-decoration: none; color: inherit; transition: 0.3s; }
+        ul { list-style: none; }
+
+        /* --- 2. HEADER Y NAV --- */
+        header {
+            background-color: rgba(0, 0, 0, 0.9);
+            padding: 20px 5%;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            border-bottom: 2px solid var(--gold);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 1.8rem;
+            font-weight: 900;
+            color: var(--white);
+            letter-spacing: 2px;
+        }
+
+        .logo span { color: var(--gold); }
+
+        nav ul {
+            display: flex;
+            gap: 25px;
+        }
+
+        nav ul li a {
+            font-weight: 700;
+            font-size: 0.9rem;
+            text-transform: uppercase;
+        }
+
+        nav ul li a:hover { color: var(--gold); }
+
+        /* --- 3. HERO (PORTADA) --- */
+        .hero {
+            height: 100vh;
+            background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), url('https://images.unsplash.com/photo-1517836357463-d25dfeac3438?q=80&w=1470&auto=format&fit=crop');
+            background-size: cover;
+            background-position: center;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 0 20px;
+        }
+
+        .hero h1 {
+            font-size: 3.5rem;
+            text-transform: uppercase;
+            margin-bottom: 10px;
+            text-shadow: 2px 2px 10px rgba(0,0,0,0.8);
+        }
+
+        .hero h1 span { color: var(--gold); }
+        .hero p { font-size: 1.2rem; margin-bottom: 30px; max-width: 600px; }
+
+        .btn {
+            padding: 12px 30px;
+            background: var(--gold);
+            color: var(--black);
+            font-weight: 900;
+            text-transform: uppercase;
+            border-radius: 5px;
+            border: none;
+            cursor: pointer;
+            display: inline-block;
+        }
+
+        .btn:hover {
+            transform: scale(1.05);
+            background: #fff;
+        }
+
+        /* --- 4. SERVICIOS (GRID 3-2 CENTRADO) --- */
+        .section { padding: 80px 5%; }
+        .title {
+            text-align: center;
+            font-size: 2.5rem;
+            margin-bottom: 50px;
+            text-transform: uppercase;
+            position: relative;
+        }
+        .title::after {
+            content: '';
+            display: block;
+            width: 80px;
+            height: 4px;
+            background: var(--gold);
+            margin: 10px auto 0;
+        }
+
+        .servicios-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 30px;
+        }
+
+        .card {
+            background: var(--dark-grey);
+            padding: 40px 20px;
+            border-radius: 10px;
+            width: 350px; /* Ancho fijo para alinear */
+            text-align: center;
+            border-bottom: 4px solid var(--gold);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.3);
+            transition: transform 0.3s;
+        }
+
+        .card:hover { transform: translateY(-10px); }
+
+        .card h3 { font-size: 1.5rem; margin-bottom: 15px; color: var(--gold); }
+        .card p { color: #ccc; }
+
+        /* --- 5. ASESORIAS (BANNER) --- */
+        .asesorias {
+            background: var(--gold);
+            color: var(--black);
+            text-align: center;
+            padding: 60px 20px;
+        }
+        
+        .asesorias h2 { font-size: 2rem; margin-bottom: 20px; text-transform: uppercase; }
+        .asesorias p { font-size: 1.2rem; max-width: 800px; margin: 0 auto 20px auto; font-weight: 600; }
+        
+        .btn-black {
+            background: var(--black);
+            color: var(--gold);
+            padding: 12px 30px;
+            font-weight: bold;
+            border-radius: 5px;
+        }
+        .btn-black:hover { background: #333; }
+
+        /* --- 6. EQUIPO Y SUCURSALES --- */
+        .sucursales-grid {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 40px;
+        }
+
+        .sucursal-card {
+            background: #222;
+            border: 1px solid #333;
+            width: 45%;
+            min-width: 300px;
+            padding: 30px;
+            border-radius: 10px;
+        }
+
+        .sucursal-card h3 { color: var(--gold); font-size: 1.8rem; margin-bottom: 10px; }
+        .sucursal-card .profe { font-weight: bold; font-size: 1.1rem; margin-bottom: 15px; display: block; color: white;}
+        .sucursal-card .info { color: #aaa; margin-bottom: 20px; font-size: 0.95rem; }
+
+        .map-link {
+            display: inline-block;
+            color: var(--gold);
+            font-weight: bold;
+            border: 1px solid var(--gold);
+            padding: 8px 20px;
+            border-radius: 4px;
+        }
+        .map-link:hover { background: var(--gold); color: var(--black); }
+
+        /* --- 7. FOOTER --- */
+        footer {
+            background: black;
+            text-align: center;
+            padding: 30px;
+            border-top: 1px solid #333;
+            margin-top: 50px;
+        }
+
+        /* --- RESPONSIVE (MÓVIL) --- */
+        @media (max-width: 768px) {
+            .hero h1 { font-size: 2.5rem; }
+            nav ul { display: none; } /* Menú simple oculto en móvil por ahora */
+            .logo { font-size: 1.5rem; }
+            .sucursal-card { width: 100%; }
+            .card { width: 100%; }
+        }
+    </style>
 </head>
 <body>
 
-    <header id="navbar">
-        <div class="container nav-container">
-            <div class="logo">POWER <span>GYM</span></div>
-            <nav>
-                <ul class="nav-links">
-                    <li><a href="#inicio">Inicio</a></li>
-                    <li><a href="#nosotros">Nosotros</a></li>
-                    <li><a href="#servicios">Servicios</a></li>
-                    <li><a href="#equipo">Entrenadores</a></li>
-                    <li><a href="#contacto">Sucursales</a></li>
-                </ul>
-                <div class="burger">
-                    <div class="line1"></div>
-                    <div class="line2"></div>
-                    <div class="line3"></div>
-                </div>
-            </nav>
-        </div>
+    <header>
+        <div class="logo">POWER <span>GYM</span></div>
+        <nav>
+            <ul>
+                <li><a href="#servicios">Servicios</a></li>
+                <li><a href="#asesorias">Asesorías</a></li>
+                <li><a href="#sucursales">Sucursales</a></li>
+                <li><a href="#contacto">Contacto</a></li>
+            </ul>
+        </nav>
     </header>
 
-    <section id="inicio" class="hero">
-        <div class="hero-content">
-            <h1>TU MEJOR VERSIÓN <br>COMIENZA AQUÍ</h1>
-            <p>Entrenamiento de alto nivel, artes marciales y asesoría personalizada.</p>
-            <div class="hero-btns">
-                <a href="#contacto" class="btn btn-primary">Ver Ubicaciones</a>
-                <a href="#servicios" class="btn btn-outline">Nuestras Clases</a>
+    <section class="hero">
+        <h1>TRANSFORMA TU <br><span>POTENCIAL</span></h1>
+        <p>Musculación, Artes Marciales y Danza. Entrenamiento profesional en dos ubicaciones estratégicas.</p>
+        <a href="#sucursales" class="btn">Empezar Ahora</a>
+    </section>
+
+    <section id="servicios" class="section">
+        <h2 class="title">Nuestros Servicios</h2>
+        <div class="servicios-container">
+            <div class="card">
+                <h3>AMBIENTE TOP</h3>
+                <p>Entrena con la mejor música, aire acondicionado y una comunidad que te motiva día a día.</p>
+            </div>
+            <div class="card">
+                <h3>MUSCULACIÓN</h3>
+                <p>Equipamiento completo de peso libre y máquinas para hipertrofia y fuerza.</p>
+            </div>
+            <div class="card">
+                <h3>TAEKWONDO (TKW)</h3>
+                <p>Arte marcial olímpico. Disciplina, técnica y autocontrol.</p>
+            </div>
+            <div class="card">
+                <h3>KICK BOXING</h3>
+                <p>Quema calorías y aprendé defensa personal con entrenamiento de alta intensidad.</p>
+            </div>
+            <div class="card">
+                <h3>DANZA ÁRABE</h3>
+                <p>Clases exclusivas para mejorar la coordinación, el ritmo y la expresión corporal.</p>
             </div>
         </div>
     </section>
 
-    <section id="nosotros" class="section-padding bg-dark">
-        <div class="container text-center">
-            <h2 class="section-title">SOMOS <span class="text-gold">POWER GYM</span></h2>
-            <p class="section-subtitle">Más que un gimnasio, una familia de campeones.</p>
-            <div class="about-content">
-                <p>En Power Gym nos dedicamos a forjar carácter y físico. Con instalaciones preparadas para el alto rendimiento y un ambiente motivador, somos el lugar donde tus metas se convierten en realidad. Ya sea que busques fuerza, resistencia o técnica en artes marciales, aquí encontrarás tu lugar.</p>
-            </div>
-        </div>
+    <section id="asesorias" class="asesorias">
+        <h2>Asesorías Personalizadas</h2>
+        <p>¿Querés resultados más rápidos? Nuestros instructores principales diseñan planes a tu medida.</p>
+        <p style="font-size: 1rem; margin-top: -10px; margin-bottom: 20px;">Consultá disponibilidad con <strong>Diego, Elías o César Chávez</strong>.</p>
+        <a href="https://wa.me/595974978876" class="btn-black">Solicitar Asesoría</a>
     </section>
 
-    <section id="servicios" class="section-padding bg-light">
-        <div class="container">
-            <h2 class="section-title text-center text-dark">NUESTROS SERVICIOS</h2>
-            <div class="servicios-grid">
-                <div class="card-servicio">
-                    <div class="icon"><i class="fas fa-star"></i></div>
-                    <h3>Ambiente Top</h3>
-                    <p>Espacios climatizados, buena música y la mejor energía para entrenar.</p>
-                </div>
-                <div class="card-servicio">
-                    <div class="icon"><i class="fas fa-dumbbell"></i></div>
-                    <h3>Musculación</h3>
-                    <p>Maquinaria completa para hipertrofia, fuerza y acondicionamiento.</p>
-                </div>
-                <div class="card-servicio">
-                    <div class="icon"><i class="fas fa-user-ninja"></i></div>
-                    <h3>Taekwondo (TKW)</h3>
-                    <p>Disciplina marcial enfocada en la técnica, respeto y autocontrol.</p>
-                </div>
-                <div class="card-servicio">
-                    <div class="icon"><i class="fas fa-fist-raised"></i></div>
-                    <h3>Kick Boxing</h3>
-                    <p>Alta intensidad, cardio y defensa personal en cada sesión.</p>
-                </div>
-                <div class="card-servicio">
-                    <div class="icon"><i class="fas fa-music"></i></div>
-                    <h3>Danza Árabe</h3>
-                    <p>Conectá con tu cuerpo, mejorá tu ritmo y coordinación.</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <section class="asesoria-banner">
-        <div class="container">
-            <h2>¿NECESITÁS UN PLAN A MEDIDA?</h2>
-            <p>Nuestros profesores ofrecen <strong>Asesorías Personalizadas</strong> para acelerar tus resultados.</p>
-            <a href="https://wa.me/595974978876" class="btn btn-gold">Contactar al Dueño</a>
-        </div>
-    </section>
-
-    <section id="equipo" class="section-padding bg-dark">
-        <div class="container">
-            <h2 class="section-title text-center">NUESTROS PROFESORES</h2>
-            <div class="team-grid">
-                <div class="team-card">
-                    <div class="img-placeholder">Diego</div>
-                    <h3>Diego Chávez</h3>
-                    <p class="role">Instructor Principal</p>
-                    <p class="location-badge">Casa Central</p>
-                </div>
-                <div class="team-card">
-                    <div class="img-placeholder">Elías</div>
-                    <h3>Elías Chávez</h3>
-                    <p class="role">Instructor</p>
-                    <p class="location-badge">Casa Central</p>
-                </div>
-                <div class="team-card">
-                    <div class="img-placeholder">César</div>
-                    <h3>César Chávez</h3>
-                    <p class="role">Instructor Principal</p>
-                    <p class="location-badge">Sucursal Remansito</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <section id="contacto" class="section-padding">
-        <div class="container">
-            <h2 class="section-title text-center text-dark">DÓNDE ENCONTRARNOS</h2>
-            <div class="sucursales-wrapper">
-                
-                <div class="sucursal-box">
-                    <h3>POWER GYM (Central)</h3>
-                    <p><i class="fas fa-map-marker-alt"></i> Paseo de Fátima, Mariano Roque Alonso</p>
-                    <p><i class="fas fa-clock"></i> Lun-Vie: 06:00 - 22:00 | Sáb: 09:00 - 17:00</p>
-                    <p><strong>Profes:</strong> Diego y Elías Chávez</p>
-                    <a href="https://maps.app.goo.gl/G4VPtmGZb1K8s2DP8" target="_blank" class="btn btn-map">Abrir en Mapa</a>
-                </div>
-
-                <div class="sucursal-box">
-                    <h3>POWER GYM (Remansito)</h3>
-                    <p><i class="fas fa-map-marker-alt"></i> Remansito, Paraguay</p>
-                    <p><i class="fas fa-clock"></i> Lun-Vie: 08:00 - 21:00</p>
-                    <p><strong>Profe:</strong> César Chávez</p>
-                    <a href="https://maps.app.goo.gl/X6wTxJMKWGXguG8F8" target="_blank" class="btn btn-map">Abrir en Mapa</a>
-                </div>
-
-            </div>
+    <section id="sucursales" class="section">
+        <h2 class="title">Nuestras Sedes</h2>
+        <div class="sucursales-grid">
             
-            <div class="contact-direct text-center">
-                <p>¿Consultas directas?</p>
-                <a href="tel:+595974978876" class="phone-link">+595 974 978876</a>
+            <div class="sucursal-card">
+                <h3>CASA CENTRAL</h3>
+                <span class="profe">Profesores: Diego Chávez y Elías Chávez</span>
+                <div class="info">
+                    <p>📍 Paseo de Fátima, Mariano Roque Alonso</p>
+                    <p>🕒 Lun-Vie: 06:00 - 22:00 | Sáb: 09:00 - 17:00</p>
+                </div>
+                <a href="https://maps.app.goo.gl/G4VPtmGZb1K8s2DP8" target="_blank" class="map-link">Ver en Mapa</a>
             </div>
+
+            <div class="sucursal-card">
+                <h3>SUCURSAL REMANSITO</h3>
+                <span class="profe">Profesor: César Chávez</span>
+                <div class="info">
+                    <p>📍 Remansito, Paraguay</p>
+                    <p>🕒 Lun-Vie: 08:00 - 21:00</p>
+                </div>
+                <a href="https://maps.app.goo.gl/X6wTxJMKWGXguG8F8" target="_blank" class="map-link">Ver en Mapa</a>
+            </div>
+
         </div>
     </section>
 
-    <footer>
-        <div class="container footer-content">
-            <p>&copy; 2026 Power Gym. Todos los derechos reservados.</p>
-            <div class="socials">
-                <a href="#">Instagram</a>
-                <a href="#">Facebook</a>
-            </div>
-        </div>
+    <footer id="contacto">
+        <p>© 2026 POWER GYM PARAGUAY</p>
+        <p>Contacto Dueño: <a href="tel:+595974978876" style="color:var(--gold)">+595 974 978876</a></p>
     </footer>
 
-    <script src="script.js"></script>
+    <script>
+        // Scroll suave
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+        console.log("Web cargada correctamente");
+    </script>
 </body>
 </html>
+
