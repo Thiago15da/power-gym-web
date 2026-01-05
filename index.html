@@ -3,112 +3,159 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Power Gym MRA | Tu Mejor Versión</title>
+    <title>POWER GYM | Entrenamiento de Élite en Paraguay</title>
     <link rel="stylesheet" href="style.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 </head>
 <body>
 
-    <nav class="navbar">
-        <div class="logo">POWER <span>GYM</span></div>
-        <ul class="nav-links">
-            <li><a href="#inicio">Inicio</a></li>
-            <li><a href="#disciplinas">Clases</a></li>
-            <li><a href="#sucursales">Sedes</a></li>
-            <li><a href="#inscribite" class="btn-nav">Inscribite Ya</a></li>
-        </ul>
-        <div class="burger" onclick="toggleMenu()">
-            <div class="line1"></div>
-            <div class="line2"></div>
-            <div class="line3"></div>
-        </div>
-    </nav>
-
-    <header id="inicio" class="hero">
-        <div class="hero-overlay"></div>
-        <div class="hero-content">
-            <h1>TU FUERZA <br><span>NO TIENE LÍMITES</span></h1>
-            <p>El gimnasio con el mejor ambiente de Mariano Roque Alonso. Únete a la tribu.</p>
-            <div class="hero-btns">
-                <a href="#inscribite" class="btn-primary">Empezar Hoy</a>
-                <a href="#sucursales" class="btn-outline">Ver Ubicaciones</a>
-            </div>
+    <header id="navbar">
+        <div class="container nav-container">
+            <div class="logo">POWER <span>GYM</span></div>
+            <nav>
+                <ul class="nav-links">
+                    <li><a href="#inicio">Inicio</a></li>
+                    <li><a href="#nosotros">Nosotros</a></li>
+                    <li><a href="#servicios">Servicios</a></li>
+                    <li><a href="#equipo">Entrenadores</a></li>
+                    <li><a href="#contacto">Sucursales</a></li>
+                </ul>
+                <div class="burger">
+                    <div class="line1"></div>
+                    <div class="line2"></div>
+                    <div class="line3"></div>
+                </div>
+            </nav>
         </div>
     </header>
 
-    <section id="disciplinas" class="disciplines">
-        <h2 class="section-title">Entrena a tu <span>Ritmo</span></h2>
-        <div class="grid-container">
-            <div class="card">
-                <i class="fas fa-music"></i>
-                <h3>Zumba</h3>
-                <p>Quema calorías bailando con la mejor energía.</p>
-            </div>
-            <div class="card">
-                <i class="fas fa-globe"></i> <h3>Ambiente Top</h3>
-                <p>Compañerismo y buena onda asegurada.</p>
-            </div>
-            <div class="card">
-                <i class="fas fa-hand-rock"></i>
-                <h3>Box & TKD</h3>
-                <p>Artes marciales para disciplina y defensa.</p>
-            </div>
-            <div class="card">
-                <i class="fas fa-dumbbell"></i>
-                <h3>Musculación</h3>
-                <p>Equipamiento completo para tu hipertrofia.</p>
+    <section id="inicio" class="hero">
+        <div class="hero-content">
+            <h1>TU MEJOR VERSIÓN <br>COMIENZA AQUÍ</h1>
+            <p>Entrenamiento de alto nivel, artes marciales y asesoría personalizada.</p>
+            <div class="hero-btns">
+                <a href="#contacto" class="btn btn-primary">Ver Ubicaciones</a>
+                <a href="#servicios" class="btn btn-outline">Nuestras Clases</a>
             </div>
         </div>
     </section>
 
-    <section id="sucursales" class="locations">
-        <h2 class="section-title">Nuestras <span>Sedes MRA</span></h2>
-        <div class="loc-wrapper">
-            <div class="loc-card">
-                <div class="loc-icon"><i class="fas fa-map-pin"></i></div>
-                <div class="loc-info">
-                    <h3>Sucursal 1: Centro</h3>
-                    <p>Ubicada en el corazón de Mariano. Ideal si trabajas por la zona.</p>
-                    <br>
-                    <a href="#" class="link-map">Ver en Mapa <i class="fas fa-arrow-right"></i></a>
+    <section id="nosotros" class="section-padding bg-dark">
+        <div class="container text-center">
+            <h2 class="section-title">SOMOS <span class="text-gold">POWER GYM</span></h2>
+            <p class="section-subtitle">Más que un gimnasio, una familia de campeones.</p>
+            <div class="about-content">
+                <p>En Power Gym nos dedicamos a forjar carácter y físico. Con instalaciones preparadas para el alto rendimiento y un ambiente motivador, somos el lugar donde tus metas se convierten en realidad. Ya sea que busques fuerza, resistencia o técnica en artes marciales, aquí encontrarás tu lugar.</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="servicios" class="section-padding bg-light">
+        <div class="container">
+            <h2 class="section-title text-center text-dark">NUESTROS SERVICIOS</h2>
+            <div class="servicios-grid">
+                <div class="card-servicio">
+                    <div class="icon"><i class="fas fa-star"></i></div>
+                    <h3>Ambiente Top</h3>
+                    <p>Espacios climatizados, buena música y la mejor energía para entrenar.</p>
                 </div>
+                <div class="card-servicio">
+                    <div class="icon"><i class="fas fa-dumbbell"></i></div>
+                    <h3>Musculación</h3>
+                    <p>Maquinaria completa para hipertrofia, fuerza y acondicionamiento.</p>
+                </div>
+                <div class="card-servicio">
+                    <div class="icon"><i class="fas fa-user-ninja"></i></div>
+                    <h3>Taekwondo (TKW)</h3>
+                    <p>Disciplina marcial enfocada en la técnica, respeto y autocontrol.</p>
+                </div>
+                <div class="card-servicio">
+                    <div class="icon"><i class="fas fa-fist-raised"></i></div>
+                    <h3>Kick Boxing</h3>
+                    <p>Alta intensidad, cardio y defensa personal en cada sesión.</p>
+                </div>
+                <div class="card-servicio">
+                    <div class="icon"><i class="fas fa-music"></i></div>
+                    <h3>Danza Árabe</h3>
+                    <p>Conectá con tu cuerpo, mejorá tu ritmo y coordinación.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="asesoria-banner">
+        <div class="container">
+            <h2>¿NECESITÁS UN PLAN A MEDIDA?</h2>
+            <p>Nuestros profesores ofrecen <strong>Asesorías Personalizadas</strong> para acelerar tus resultados.</p>
+            <a href="https://wa.me/595974978876" class="btn btn-gold">Contactar al Dueño</a>
+        </div>
+    </section>
+
+    <section id="equipo" class="section-padding bg-dark">
+        <div class="container">
+            <h2 class="section-title text-center">NUESTROS PROFESORES</h2>
+            <div class="team-grid">
+                <div class="team-card">
+                    <div class="img-placeholder">Diego</div>
+                    <h3>Diego Chávez</h3>
+                    <p class="role">Instructor Principal</p>
+                    <p class="location-badge">Casa Central</p>
+                </div>
+                <div class="team-card">
+                    <div class="img-placeholder">Elías</div>
+                    <h3>Elías Chávez</h3>
+                    <p class="role">Instructor</p>
+                    <p class="location-badge">Casa Central</p>
+                </div>
+                <div class="team-card">
+                    <div class="img-placeholder">César</div>
+                    <h3>César Chávez</h3>
+                    <p class="role">Instructor Principal</p>
+                    <p class="location-badge">Sucursal Remansito</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="contacto" class="section-padding">
+        <div class="container">
+            <h2 class="section-title text-center text-dark">DÓNDE ENCONTRARNOS</h2>
+            <div class="sucursales-wrapper">
+                
+                <div class="sucursal-box">
+                    <h3>POWER GYM (Central)</h3>
+                    <p><i class="fas fa-map-marker-alt"></i> Paseo de Fátima, Mariano Roque Alonso</p>
+                    <p><i class="fas fa-clock"></i> Lun-Vie: 06:00 - 22:00 | Sáb: 09:00 - 17:00</p>
+                    <p><strong>Profes:</strong> Diego y Elías Chávez</p>
+                    <a href="https://maps.app.goo.gl/G4VPtmGZb1K8s2DP8" target="_blank" class="btn btn-map">Abrir en Mapa</a>
+                </div>
+
+                <div class="sucursal-box">
+                    <h3>POWER GYM (Remansito)</h3>
+                    <p><i class="fas fa-map-marker-alt"></i> Remansito, Paraguay</p>
+                    <p><i class="fas fa-clock"></i> Lun-Vie: 08:00 - 21:00</p>
+                    <p><strong>Profe:</strong> César Chávez</p>
+                    <a href="https://maps.app.goo.gl/X6wTxJMKWGXguG8F8" target="_blank" class="btn btn-map">Abrir en Mapa</a>
+                </div>
+
             </div>
             
-            <div class="loc-card">
-                <div class="loc-icon"><i class="fas fa-building"></i></div>
-                <div class="loc-info">
-                    <h3>Sucursal 2: Expandida</h3>
-                    <p>Espacios más amplios, zona de cardio renovada y estacionamiento.</p>
-                    <br>
-                    <a href="#" class="link-map">Ver en Mapa <i class="fas fa-arrow-right"></i></a>
-                </div>
+            <div class="contact-direct text-center">
+                <p>¿Consultas directas?</p>
+                <a href="tel:+595974978876" class="phone-link">+595 974 978876</a>
             </div>
-        </div>
-    </section>
-
-    <section id="inscribite" class="cta-section">
-        <div class="cta-content">
-            <h2>¿Listo para el cambio?</h2>
-            <p>No dejes para el lunes lo que puedes empezar hoy.</p>
-            <form class="signup-form">
-                <input type="text" placeholder="Nombre completo" required>
-                <input type="tel" placeholder="WhatsApp (Ej: 0981...)" required>
-                <button type="submit" class="btn-submit">QUIERO INFO</button>
-            </form>
         </div>
     </section>
 
     <footer>
-        <p>&copy; 2026 Power Gym Mariano Roque Alonso.</p>
-        <div class="socials">
-            <a href="#"><i class="fab fa-instagram"></i></a>
-            <a href="#"><i class="fab fa-facebook"></i></a>
+        <div class="container footer-content">
+            <p>&copy; 2026 Power Gym. Todos los derechos reservados.</p>
+            <div class="socials">
+                <a href="#">Instagram</a>
+                <a href="#">Facebook</a>
+            </div>
         </div>
     </footer>
-
-    <a href="https://wa.me/595900000000" class="whatsapp-float" target="_blank">
-        <i class="fab fa-whatsapp"></i>
-    </a>
 
     <script src="script.js"></script>
 </body>
