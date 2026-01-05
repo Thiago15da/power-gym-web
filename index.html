@@ -4,247 +4,459 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>POWER GYM | Alto Rendimiento</title>
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700;900&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;700;900&family=Oswald:wght@500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
     <style>
+        /* --- VARIABLES Y RESET --- */
         :root {
-            --primary: #D60000;
-            --black: #0a0a0a;
+            --primary: #D60000; /* Rojo Power */
+            --primary-dark: #a80000;
+            --black: #050505;
             --dark-grey: #121212;
+            --light-grey: #f4f4f4;
             --white: #ffffff;
             --whatsapp: #25D366;
         }
 
         * { margin: 0; padding: 0; box-sizing: border-box; }
-        body { font-family: 'Montserrat', sans-serif; background-color: var(--black); color: var(--white); line-height: 1.6; overflow-x: hidden; scroll-behavior: smooth; }
 
-        /* --- NAVEGACIÓN --- */
-        header { 
-            background: rgba(0,0,0,0.98); padding: 15px 8%; position: fixed; width: 100%; top: 0; z-index: 2000; 
-            border-bottom: 2px solid var(--primary); display: flex; justify-content: space-between; align-items: center; 
+        html { scroll-behavior: smooth; }
+
+        body { 
+            font-family: 'Montserrat', sans-serif; 
+            background-color: var(--black); 
+            color: var(--white); 
+            line-height: 1.6; 
+            overflow-x: hidden; 
         }
-        .logo { font-size: 1.6rem; font-weight: 900; letter-spacing: 2px; text-transform: uppercase; }
+
+        h1, h2, h3, .logo { font-family: 'Oswald', sans-serif; text-transform: uppercase; }
+
+        /* --- CLASES DE UTILIDAD --- */
+        .container { max-width: 1200px; margin: 0 auto; padding: 0 20px; }
+        .text-primary { color: var(--primary); }
+        .btn {
+            display: inline-block;
+            padding: 12px 30px;
+            font-weight: 700;
+            text-decoration: none;
+            border-radius: 4px;
+            transition: 0.3s;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            cursor: pointer;
+            border: none;
+        }
+        .btn-red { background: var(--primary); color: white; }
+        .btn-red:hover { background: var(--white); color: var(--primary); transform: translateY(-3px); }
+
+        /* --- HEADER & NAV --- */
+        header { 
+            background: rgba(5, 5, 5, 0.95); 
+            padding: 15px 0; 
+            position: fixed; 
+            width: 100%; 
+            top: 0; 
+            z-index: 2000; 
+            border-bottom: 2px solid var(--primary);
+            box-shadow: 0 4px 15px rgba(0,0,0,0.5);
+        }
+
+        .nav-container { display: flex; justify-content: space-between; align-items: center; }
+
+        .logo { font-size: 1.8rem; font-weight: 700; letter-spacing: 2px; color: white; font-style: italic; }
         .logo span { color: var(--primary); }
 
-        /* Menú Desktop */
         .nav-menu { display: flex; gap: 30px; list-style: none; }
-        .nav-menu li a { text-decoration: none; color: white; font-weight: 700; font-size: 0.85rem; text-transform: uppercase; transition: 0.3s; }
+        .nav-menu li a { text-decoration: none; color: white; font-weight: 600; font-size: 0.9rem; transition: 0.3s; }
         .nav-menu li a:hover { color: var(--primary); }
 
-        /* Hamburguesa */
-        .hamburger { display: none; cursor: pointer; background: none; border: none; color: white; font-size: 1.8rem; }
+        /* Hamburguesa Móvil */
+        .hamburger { display: none; cursor: pointer; font-size: 1.8rem; color: white; background: none; border: none; }
 
-        @media (max-width: 900px) {
-            .hamburger { display: block; }
-            .nav-menu {
-                position: fixed; top: 0; right: -100%; height: 100vh; width: 70%; 
-                background: #000; flex-direction: column; align-items: center; justify-content: center;
-                transition: 0.5s; z-index: 1999; box-shadow: -5px 0 20px rgba(0,0,0,0.8);
-            }
-            .nav-menu.active { right: 0; }
-        }
-
-        /* --- HERO --- */
+        /* --- HERO SECTION --- */
         .hero { 
-            height: 100vh; background: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,1)), url('https://images.unsplash.com/photo-1534438327276-14e5300c3a48?q=80&w=1470&auto=format&fit=crop'); 
-            background-size: cover; background-position: center; display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center; padding: 0 20px; 
+            height: 100vh; 
+            background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.8)), url('https://images.unsplash.com/photo-1534438327276-14e5300c3a48?q=80&w=1470&auto=format&fit=crop'); 
+            background-size: cover; 
+            background-position: center; 
+            background-attachment: fixed; /* Efecto Parallax */
+            display: flex; 
+            align-items: center; 
+            justify-content: center; 
+            text-align: center; 
+            padding: 0 20px;
+            margin-top: 60px;
         }
-        .hero h1 { font-size: clamp(2.5rem, 8vw, 5.5rem); text-transform: uppercase; font-weight: 900; line-height: 0.9; margin-bottom: 20px; }
-        .hero h1 span { color: var(--primary); }
-        .hero p { font-size: 1.1rem; max-width: 600px; color: #bbb; text-transform: uppercase; letter-spacing: 2px; }
 
-        /* --- SECCIONES --- */
-        .section { padding: 100px 8%; }
-        .title-wrap { text-align: center; margin-bottom: 70px; }
-        .title { font-size: 3rem; text-transform: uppercase; font-weight: 900; letter-spacing: -1px; }
-        .title span { color: var(--primary); }
-        .divider { width: 60px; height: 4px; background: var(--primary); margin: 15px auto; }
+        .hero-content h1 { 
+            font-size: clamp(2.5rem, 8vw, 5rem); /* Texto adaptable */
+            line-height: 1.1; 
+            margin-bottom: 20px; 
+            text-shadow: 2px 2px 10px rgba(0,0,0,0.8);
+        }
+        
+        .hero-content p { 
+            font-size: 1.2rem; 
+            margin-bottom: 30px; 
+            font-weight: 300; 
+            letter-spacing: 2px; 
+        }
 
-        /* SERVICIOS */
-        .grid-servicios { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 20px; }
-        .card-s { background: var(--dark-grey); padding: 50px 30px; border-radius: 4px; border-top: 4px solid #222; transition: 0.4s; }
-        .card-s:hover { border-top-color: var(--primary); transform: translateY(-10px); background: #1a1a1a; }
-        .card-s i { font-size: 2.5rem; color: var(--primary); margin-bottom: 20px; }
-        .card-s h3 { font-size: 1.4rem; margin-bottom: 15px; text-transform: uppercase; }
-        .card-s p { color: #888; font-size: 0.95rem; }
+        /* --- SECCIONES GENERALES --- */
+        .section { padding: 80px 0; }
+        .section-title { text-align: center; margin-bottom: 60px; }
+        .section-title h2 { font-size: 2.5rem; margin-bottom: 10px; }
+        .divider { width: 80px; height: 4px; background: var(--primary); margin: 0 auto; }
 
-        /* ASESORÍAS (STAFF) */
-        .grid-staff { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 30px; }
-        .card-p { background: #111; border-radius: 12px; overflow: hidden; border: 1px solid #222; text-align: center; padding-bottom: 30px; transition: 0.3s; }
+        /* --- DISCIPLINAS (Arreglado el centrado) --- */
+        .grid-servicios { 
+            display: flex; 
+            flex-wrap: wrap; 
+            justify-content: center; /* CLAVE: Centra los elementos */
+            gap: 25px; 
+        }
+
+        .card-s { 
+            background: var(--dark-grey); 
+            padding: 40px 25px; 
+            border-radius: 8px; 
+            border-bottom: 4px solid transparent; 
+            text-align: center; 
+            transition: 0.4s;
+            /* Flex properties para tamaño uniforme */
+            flex: 1 1 300px; 
+            max-width: 350px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .card-s:hover { 
+            border-bottom-color: var(--primary); 
+            transform: translateY(-10px); 
+            background: #1a1a1a; 
+            box-shadow: 0 10px 30px rgba(214, 0, 0, 0.15);
+        }
+
+        .card-s i { font-size: 3rem; color: var(--primary); margin-bottom: 20px; }
+        .card-s h3 { margin-bottom: 15px; font-size: 1.4rem; }
+        .card-s p { color: #aaa; font-size: 0.9rem; }
+
+        /* --- ESTADÍSTICAS (Toque PRO) --- */
+        .stats-section { background: var(--primary); color: white; padding: 40px 0; text-align: center; }
+        .stats-grid { display: flex; flex-wrap: wrap; justify-content: center; gap: 50px; }
+        .stat-item h3 { font-size: 3rem; margin-bottom: 5px; }
+        .stat-item p { font-size: 1rem; font-weight: 700; text-transform: uppercase; letter-spacing: 1px; opacity: 0.9; }
+
+        /* --- STAFF / ASESORÍAS --- */
+        .grid-staff { display: flex; flex-wrap: wrap; justify-content: center; gap: 30px; }
+        .card-p { 
+            background: #111; 
+            width: 300px; 
+            text-align: center; 
+            border-radius: 10px; 
+            overflow: hidden; 
+            border: 1px solid #222; 
+            transition: 0.3s;
+        }
         .card-p:hover { border-color: var(--primary); }
-        .p-icon { background: #1a1a1a; padding: 50px 0; color: #333; font-size: 4rem; }
-        .p-name { font-size: 1.8rem; font-weight: 900; margin: 20px 0 5px; color: var(--primary); }
-        .p-role { font-size: 0.8rem; text-transform: uppercase; color: #666; font-weight: 700; margin-bottom: 20px; display: block; }
-        .btn-asesoria { 
-            display: inline-flex; align-items: center; gap: 10px; background: white; color: black; 
-            padding: 12px 25px; border-radius: 50px; font-weight: 900; text-decoration: none; font-size: 0.8rem; transition: 0.3s;
-        }
-        .btn-asesoria:hover { background: var(--primary); color: white; }
+        .p-img-placeholder { height: 200px; background: #222; display: flex; align-items: center; justify-content: center; color: #444; font-size: 5rem; }
+        .p-info { padding: 25px; }
+        .p-name { color: var(--primary); margin-bottom: 5px; font-size: 1.5rem; }
+        .p-role { display: block; font-size: 0.85rem; color: #777; margin-bottom: 20px; font-weight: bold; }
+        .btn-ws-small { background: #25D366; color: white; padding: 8px 15px; border-radius: 20px; text-decoration: none; font-size: 0.8rem; font-weight: bold; display: inline-flex; align-items: center; gap: 5px; }
 
-        /* SUCURSALES */
-        .sucursal-container { display: grid; grid-template-columns: 1fr 1fr; gap: 30px; }
-        .sucursal-card { background: #111; padding: 50px; border-radius: 15px; border-left: 8px solid var(--primary); }
-        .btn-ws { 
-            display: flex; align-items: center; justify-content: center; gap: 10px; background: var(--whatsapp); 
-            color: white; padding: 15px; border-radius: 8px; font-weight: 900; text-decoration: none; margin-top: 25px; transition: 0.3s;
+        /* --- SEDES --- */
+        .sedes-container { display: flex; flex-wrap: wrap; justify-content: center; gap: 30px; }
+        .sede-card { 
+            flex: 1 1 400px; 
+            background: #111; 
+            padding: 40px; 
+            border-radius: 10px; 
+            border-left: 5px solid var(--primary); 
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
         }
-        .btn-ws:hover { filter: brightness(1.1); transform: scale(1.02); }
+        .sede-card h3 { font-size: 1.8rem; margin-bottom: 15px; }
+        .sede-info p { margin-bottom: 10px; color: #ccc; display: flex; align-items: center; gap: 10px; }
+        .btn-sede { margin-top: 20px; display: inline-block; color: var(--primary); text-decoration: none; font-weight: bold; border: 1px solid var(--primary); padding: 10px 20px; border-radius: 5px; transition: 0.3s; text-align: center;}
+        .btn-sede:hover { background: var(--primary); color: white; }
 
-        /* FORMULARIO */
-        .form-container { max-width: 800px; margin: 0 auto; background: #080808; padding: 50px; border: 1px solid #222; }
-        .form-group { margin-bottom: 20px; }
-        .form-group input, .form-group textarea { 
-            width: 100%; padding: 15px; background: #151515; border: 1px solid #333; color: white; font-family: inherit;
-        }
-        .btn-send { width: 100%; padding: 20px; background: var(--primary); border: none; color: white; font-weight: 900; text-transform: uppercase; cursor: pointer; }
-
-        footer { padding: 80px 8%; background: #000; text-align: center; border-top: 1px solid #222; }
-        .socials { margin-bottom: 30px; display: flex; justify-content: center; gap: 20px; }
-        .socials a { font-size: 2rem; color: #333; transition: 0.3s; }
+        /* --- CONTACTO --- */
+        .form-wrapper { max-width: 600px; margin: 0 auto; background: #0f0f0f; padding: 40px; border-radius: 10px; border: 1px solid #333; }
+        .input-group { margin-bottom: 20px; }
+        .input-group input, .input-group select { width: 100%; padding: 15px; background: #1a1a1a; border: 1px solid #333; color: white; border-radius: 5px; font-family: inherit; }
+        .input-group input:focus { outline: none; border-color: var(--primary); }
+        
+        /* --- FOOTER --- */
+        footer { background: #000; padding: 50px 0 20px; text-align: center; border-top: 1px solid #222; }
+        .socials { margin-bottom: 20px; }
+        .socials a { color: white; font-size: 1.5rem; margin: 0 15px; transition: 0.3s; }
         .socials a:hover { color: var(--primary); }
+        .copyright { color: #555; font-size: 0.8rem; }
 
-        @media (max-width: 768px) {
-            .sucursal-container { grid-template-columns: 1fr; }
-            .hero h1 { font-size: 3rem; }
+        /* --- WHATSAPP FLOTANTE --- */
+        .float-ws { position: fixed; bottom: 20px; right: 20px; background: var(--whatsapp); width: 60px; height: 60px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 35px; color: white; box-shadow: 2px 2px 10px rgba(0,0,0,0.5); z-index: 9999; text-decoration: none; transition: 0.3s; }
+        .float-ws:hover { transform: scale(1.1); }
+
+        /* --- ANIMACIÓN FADE IN (SCROLL) --- */
+        .reveal { opacity: 0; transform: translateY(30px); transition: all 0.8s ease-out; }
+        .reveal.active { opacity: 1; transform: translateY(0); }
+
+        /* --- RESPONSIVE / MÓVIL --- */
+        @media (max-width: 900px) {
+            .nav-menu { position: fixed; top: 0; right: -100%; width: 70%; height: 100vh; background: #000; flex-direction: column; justify-content: center; align-items: center; transition: 0.5s; box-shadow: -5px 0 15px rgba(0,0,0,0.8); }
+            .nav-menu.active { right: 0; }
+            .hamburger { display: block; z-index: 2001; }
+            .hero-content h1 { font-size: 3rem; }
+        }
+
+        @media (max-width: 480px) {
+            .hero-content h1 { font-size: 2.5rem; }
+            .section-title h2 { font-size: 2rem; }
+            .card-s { flex: 1 1 100%; } /* Una columna en móvil */
+            .sede-card { padding: 25px; }
+            .btn { width: 100%; text-align: center; }
+            .container { padding: 0 15px; }
         }
     </style>
 </head>
 <body>
 
     <header>
-        <div class="logo">POWER <span>GYM</span></div>
-        <button class="hamburger" id="hamburger"><i class="fas fa-bars"></i></button>
-        <ul class="nav-menu" id="nav-menu">
-            <li><a href="#servicios">Disciplinas</a></li>
-            <li><a href="#staff">Asesorías</a></li>
-            <li><a href="#sedes">Sedes</a></li>
-            <li><a href="#contacto">Contacto</a></li>
-        </ul>
+        <div class="container nav-container">
+            <div class="logo">POWER <span>GYM</span></div>
+            <button class="hamburger" id="hamburger"><i class="fas fa-bars"></i></button>
+            <ul class="nav-menu" id="nav-menu">
+                <li><a href="#inicio">Inicio</a></li>
+                <li><a href="#actividades">Actividades</a></li>
+                <li><a href="#sedes">Sedes</a></li>
+                <li><a href="#staff">Staff</a></li>
+                <li><a href="#contacto" style="color: var(--primary);">Inscribite</a></li>
+            </ul>
+        </div>
     </header>
 
-    <section class="hero">
-        <h1>NIVEL <span>SUPERIOR</span></h1>
-        <p>Disciplina · Fuerza · Resultados</p>
-    </section>
-
-    <section id="servicios" class="section">
-        <div class="title-wrap">
-            <h2 class="title">Áreas de <span>Entrenamiento</span></h2>
-            <div class="divider"></div>
-        </div>
-        <div class="grid-servicios">
-            <div class="card-s">
-                <i class="fas fa-dumbbell"></i>
-                <h3>AMBIENTE TOP</h3>
-                <p>Equipamiento profesional de alto rendimiento y mantenimiento constante para garantizar tu seguridad y progreso.</p>
-            </div>
-            <div class="card-s">
-                <i class="fas fa-weight-hanging"></i>
-                <h3>MUSCULACIÓN</h3>
-                <p>Zona de cargas pesadas y máquinas biomecánicas diseñadas para maximizar la hipertrofia y fuerza funcional.</p>
-            </div>
-            <div class="card-s">
-                <i class="fas fa-user-ninja"></i>
-                <h3>TAEKWONDO</h3>
-                <p>Formación técnica bajo estándares de disciplina marcial, enfocada en el autocontrol y la defensa.</p>
-            </div>
-            <div class="card-s">
-                <i class="fas fa-fist-raised"></i>
-                <h3>KICK BOXING</h3>
-                <p>Entrenamiento de alta intensidad metabólica combinando técnica de combate y potencia física.</p>
-            </div>
-            <div class="card-s">
-                <i class="fas fa-fire"></i>
-                <h3>DANZA ÁRABE</h3>
-                <p>Coordinación, expresión corporal y fortalecimiento del core a través de la técnica artística.</p>
-            </div>
+    <section id="inicio" class="hero">
+        <div class="hero-content">
+            <h1>TU POTENCIAL <br><span class="text-primary">NO TIENE LÍMITES</span></h1>
+            <p>El gimnasio líder en Mariano Roque Alonso. Ambiente real, resultados reales.</p>
+            <a href="#contacto" class="btn btn-red">COMIENZA HOY</a>
         </div>
     </section>
 
-    <section id="staff" class="section" style="background: #080808;">
-        <div class="title-wrap">
-            <h2 class="title">Asesoría <span>Personalizada</span></h2>
-            <div class="divider"></div>
+    <div class="stats-section">
+        <div class="container stats-grid">
+            <div class="stat-item">
+                <h3>+10</h3>
+                <p>Años de Experiencia</p>
+            </div>
+            <div class="stat-item">
+                <h3>2</h3>
+                <p>Sedes Equipadas</p>
+            </div>
+            <div class="stat-item">
+                <h3>+1000</h3>
+                <p>Alumnos Activos</p>
+            </div>
         </div>
-        <div class="grid-staff">
-            <div class="card-p">
-                <div class="p-icon"><i class="fas fa-user-circle"></i></div>
-                <h3 class="p-name">DIEGO</h3>
-                <span class="p-role">Instructor de Élite</span>
-                <a href="https://wa.me/595974978876" target="_blank" class="btn-asesoria"><i class="fab fa-whatsapp"></i> SOLICITAR ASESORÍA</a>
+    </div>
+
+    <section id="actividades" class="section">
+        <div class="container">
+            <div class="section-title reveal">
+                <h2>ENTRENA A TU <span>NIVEL</span></h2>
+                <div class="divider"></div>
             </div>
-            <div class="card-p">
-                <div class="p-icon"><i class="fas fa-user-circle"></i></div>
-                <h3 class="p-name">ELÍAS</h3>
-                <span class="p-role">Entrenamiento Dirigido</span>
-                <a href="https://wa.me/595971521894" target="_blank" class="btn-asesoria"><i class="fab fa-whatsapp"></i> SOLICITAR ASESORÍA</a>
+            
+            <div class="grid-servicios reveal">
+                <div class="card-s">
+                    <i class="fas fa-users"></i>
+                    <h3>AMBIENTE TOP</h3>
+                    <p>Más que un gym, una comunidad. Entrena con compañeros que te motivan.</p>
+                </div>
+                <div class="card-s">
+                    <i class="fas fa-dumbbell"></i>
+                    <h3>MUSCULACIÓN</h3>
+                    <p>Equipamiento de alto rendimiento para maximizar tu hipertrofia.</p>
+                </div>
+                <div class="card-s">
+                    <i class="fas fa-user-ninja"></i>
+                    <h3>TAEKWONDO</h3>
+                    <p>Disciplina y defensa personal para niños y adultos.</p>
+                </div>
+                <div class="card-s">
+                    <i class="fas fa-music"></i>
+                    <h3>DANZA ÁRABE</h3>
+                    <p>Arte y movimiento. Mejora tu coordinación y flexibilidad.</p>
+                </div>
+                <div class="card-s">
+                    <i class="fas fa-hand-rock"></i>
+                    <h3>KICK BOXING</h3>
+                    <p>Potencia y cardio intenso para liberar todo el estrés.</p>
+                </div>
             </div>
-            <div class="card-p">
-                <div class="p-icon"><i class="fas fa-user-circle"></i></div>
-                <h3 class="p-name">CÉSAR</h3>
-                <span class="p-role">Preparación Física</span>
-                <a href="https://wa.me/595981921538" target="_blank" class="btn-asesoria"><i class="fab fa-whatsapp"></i> SOLICITAR ASESORÍA</a>
+        </div>
+    </section>
+
+    <section id="staff" class="section" style="background: #0a0a0a;">
+        <div class="container">
+            <div class="section-title reveal">
+                <h2>NUESTROS <span>PROFETAS</span></h2>
+                <div class="divider"></div>
+            </div>
+            <div class="grid-staff reveal">
+                <div class="card-p">
+                    <div class="p-img-placeholder"><i class="fas fa-user"></i></div>
+                    <div class="p-info">
+                        <h3 class="p-name">DIEGO</h3>
+                        <span class="p-role">HEAD COACH</span>
+                        <a href="https://wa.me/595974978876" class="btn-ws-small"><i class="fab fa-whatsapp"></i> Asesoría</a>
+                    </div>
+                </div>
+                <div class="card-p">
+                    <div class="p-img-placeholder"><i class="fas fa-user"></i></div>
+                    <div class="p-info">
+                        <h3 class="p-name">ELÍAS</h3>
+                        <span class="p-role">ENTRENADOR</span>
+                        <a href="https://wa.me/595971521894" class="btn-ws-small"><i class="fab fa-whatsapp"></i> Asesoría</a>
+                    </div>
+                </div>
+                <div class="card-p">
+                    <div class="p-img-placeholder"><i class="fas fa-user"></i></div>
+                    <div class="p-info">
+                        <h3 class="p-name">CÉSAR</h3>
+                        <span class="p-role">PREPARADOR FÍSICO</span>
+                        <a href="https://wa.me/595981921538" class="btn-ws-small"><i class="fab fa-whatsapp"></i> Asesoría</a>
+                    </div>
+                </div>
             </div>
         </div>
     </section>
 
     <section id="sedes" class="section">
-        <div class="title-wrap">
-            <h2 class="title">Nuestras <span>Sedes</span></h2>
-            <div class="divider"></div>
-        </div>
-        <div class="sucursal-container">
-            <div class="sucursal-card">
-                <h3>CASA CENTRAL</h3>
-                <p>📍 Paseo de Fátima</p>
-                <p>🕒 Lun a Vie: 06:00 - 22:00 | Sáb: 09:00 - 17:00</p>
-                <a href="https://wa.me/595974978876" class="btn-ws"><i class="fab fa-whatsapp"></i> CONSULTAS CENTRAL</a>
+        <div class="container">
+            <div class="section-title reveal">
+                <h2>UBICACIONES <span>MRA</span></h2>
+                <div class="divider"></div>
             </div>
-            <div class="sucursal-card">
-                <h3>REMANSITO</h3>
-                <p>📍 Ubicación Remansito</p>
-                <p>🕒 Lun a Vie: 08:00 - 21:00</p>
-                <a href="https://wa.me/595981921538" class="btn-ws"><i class="fab fa-whatsapp"></i> CONSULTAS REMANSITO</a>
+            <div class="sedes-container reveal">
+                <div class="sede-card">
+                    <h3><i class="fas fa-building text-primary"></i> CASA CENTRAL</h3>
+                    <div class="sede-info">
+                        <p>📍 Paseo de Fátima, Mariano Roque Alonso</p>
+                        <p>🕒 Lun-Vie: 06:00 - 22:00 hs</p>
+                    </div>
+                    <a href="https://maps.google.com" target="_blank" class="btn-sede">VER MAPA</a>
+                </div>
+                <div class="sede-card">
+                    <h3><i class="fas fa-map-marker-alt text-primary"></i> REMANSITO</h3>
+                    <div class="sede-info">
+                        <p>📍 Zona Remansito, Mariano Roque Alonso</p>
+                        <p>🕒 Lun-Vie: 08:00 - 21:00 hs</p>
+                    </div>
+                    <a href="https://maps.google.com" target="_blank" class="btn-sede">VER MAPA</a>
+                </div>
             </div>
         </div>
     </section>
 
-    <section id="contacto" class="section" style="background: #050505;">
-        <div class="title-wrap">
-            <h2 class="title">Contacto <span>Directo</span></h2>
-            <div class="divider"></div>
-        </div>
-        <div class="form-container">
-            <form action="#">
-                <div class="form-group"><input type="text" placeholder="Nombre completo"></div>
-                <div class="form-group"><input type="text" placeholder="WhatsApp"></div>
-                <div class="form-group"><textarea rows="5" placeholder="Tu consulta..."></textarea></div>
-                <button type="submit" class="btn-send">Enviar a Power Gym</button>
-            </form>
+    <section id="contacto" class="section" style="background: linear-gradient(#050505, #111);">
+        <div class="container">
+            <div class="section-title reveal">
+                <h2>INICIA TU <span>CAMBIO</span></h2>
+                <p style="color: #888; margin-top: 10px;">Tu primera clase de prueba es GRATIS al inscribirte por la web.</p>
+            </div>
+            <div class="form-wrapper reveal">
+                <form id="gymForm">
+                    <div class="input-group">
+                        <input type="text" placeholder="Nombre Completo" required>
+                    </div>
+                    <div class="input-group">
+                        <input type="tel" placeholder="Número de WhatsApp" required>
+                    </div>
+                    <div class="input-group">
+                        <select>
+                            <option value="">¿Qué te interesa?</option>
+                            <option value="Musculación">Musculación</option>
+                            <option value="Funcional">Funcional</option>
+                            <option value="Artes Marciales">Artes Marciales / Box</option>
+                            <option value="Zumba">Zumba / Danza</option>
+                        </select>
+                    </div>
+                    <button type="submit" class="btn btn-red" style="width: 100%;">ENVIAR MIS DATOS</button>
+                </form>
+            </div>
         </div>
     </section>
 
     <footer>
-        <div class="socials">
-            <a href="https://www.facebook.com/share/1AgWyvVEN2/?mibextid=wwXIfr" target="_blank"><i class="fab fa-facebook"></i></a>
-            <a href="https://www.instagram.com/power_gym_remanso?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw==" target="_blank"><i class="fab fa-instagram"></i></a>
+        <div class="container">
+            <div class="socials">
+                <a href="https://www.facebook.com/share/1AgWyvVEN2/?mibextid=wwXIfr" target="_blank"><i class="fab fa-facebook-f"></i></a>
+                <a href="https://www.instagram.com/power_gym_remanso" target="_blank"><i class="fab fa-instagram"></i></a>
+                <a href="#"><i class="fab fa-tiktok"></i></a>
+            </div>
+            <p class="logo" style="font-size: 1.2rem;">POWER <span>GYM</span></p>
+            <p class="copyright">© 2026 Power Gym Paraguay. Todos los derechos reservados.</p>
         </div>
-        <p>© 2026 POWER GYM PARAGUAY - ALTO RENDIMIENTO</p>
     </footer>
 
+    <a href="https://wa.me/595974978876" class="float-ws" target="_blank">
+        <i class="fab fa-whatsapp"></i>
+    </a>
+
     <script>
+        // 1. Menú Hamburguesa
         const hamburger = document.getElementById('hamburger');
         const navMenu = document.getElementById('nav-menu');
 
         hamburger.addEventListener('click', () => {
             navMenu.classList.toggle('active');
+            // Cambia el icono de barras a X
+            const icon = hamburger.querySelector('i');
+            if(navMenu.classList.contains('active')){
+                icon.classList.remove('fa-bars');
+                icon.classList.add('fa-times');
+            } else {
+                icon.classList.remove('fa-times');
+                icon.classList.add('fa-bars');
+            }
         });
 
         // Cerrar menú al hacer clic en un enlace
         document.querySelectorAll('.nav-menu li a').forEach(link => {
             link.addEventListener('click', () => {
                 navMenu.classList.remove('active');
+                hamburger.querySelector('i').classList.remove('fa-times');
+                hamburger.querySelector('i').classList.add('fa-bars');
             });
+        });
+
+        // 2. Animación de Scroll (Fade In)
+        window.addEventListener('scroll', reveal);
+
+        function reveal(){
+            var reveals = document.querySelectorAll('.reveal');
+
+            for(var i = 0; i < reveals.length; i++){
+                var windowheight = window.innerHeight;
+                var revealtop = reveals[i].getBoundingClientRect().top;
+                var revealpoint = 150;
+
+                if(revealtop < windowheight - revealpoint){
+                    reveals[i].classList.add('active');
+                }
+            }
+        }
+
+        // 3. Manejo simple del formulario
+        document.getElementById('gymForm').addEventListener('submit', function(e){
+            e.preventDefault();
+            alert('¡Gracias! Tus datos fueron enviados. Te escribiremos al WhatsApp enseguida.');
+            this.reset();
         });
     </script>
 </body>
