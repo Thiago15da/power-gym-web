@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Power Gym MRA | Tu Mejor Versión</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+
+    <nav class="navbar">
+        <div class="logo">POWER <span>GYM</span></div>
+        <ul class="nav-links">
+            <li><a href="#inicio">Inicio</a></li>
+            <li><a href="#disciplinas">Clases</a></li>
+            <li><a href="#sucursales">Sedes</a></li>
+            <li><a href="#inscribite" class="btn-nav">Inscribite Ya</a></li>
+        </ul>
+        <div class="burger" onclick="toggleMenu()">
+            <div class="line1"></div>
+            <div class="line2"></div>
+            <div class="line3"></div>
+        </div>
+    </nav>
+
+    <header id="inicio" class="hero">
+        <div class="hero-overlay"></div>
+        <div class="hero-content">
+            <h1>TU FUERZA <br><span>NO TIENE LÍMITES</span></h1>
+            <p>El gimnasio con el mejor ambiente de Mariano Roque Alonso. Únete a la tribu.</p>
+            <div class="hero-btns">
+                <a href="#inscribite" class="btn-primary">Empezar Hoy</a>
+                <a href="#sucursales" class="btn-outline">Ver Ubicaciones</a>
+            </div>
+        </div>
+    </header>
+
+    <section id="disciplinas" class="disciplines">
+        <h2 class="section-title">Entrena a tu <span>Ritmo</span></h2>
+        <div class="grid-container">
+            <div class="card">
+                <i class="fas fa-music"></i>
+                <h3>Zumba</h3>
+                <p>Quema calorías bailando con la mejor energía.</p>
+            </div>
+            <div class="card">
+                <i class="fas fa-globe"></i> <h3>Ambiente Top</h3>
+                <p>Compañerismo y buena onda asegurada.</p>
+            </div>
+            <div class="card">
+                <i class="fas fa-hand-rock"></i>
+                <h3>Box & TKD</h3>
+                <p>Artes marciales para disciplina y defensa.</p>
+            </div>
+            <div class="card">
+                <i class="fas fa-dumbbell"></i>
+                <h3>Musculación</h3>
+                <p>Equipamiento completo para tu hipertrofia.</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="sucursales" class="locations">
+        <h2 class="section-title">Nuestras <span>Sedes MRA</span></h2>
+        <div class="loc-wrapper">
+            <div class="loc-card">
+                <div class="loc-icon"><i class="fas fa-map-pin"></i></div>
+                <div class="loc-info">
+                    <h3>Sucursal 1: Centro</h3>
+                    <p>Ubicada en el corazón de Mariano. Ideal si trabajas por la zona.</p>
+                    <br>
+                    <a href="#" class="link-map">Ver en Mapa <i class="fas fa-arrow-right"></i></a>
+                </div>
+            </div>
+            
+            <div class="loc-card">
+                <div class="loc-icon"><i class="fas fa-building"></i></div>
+                <div class="loc-info">
+                    <h3>Sucursal 2: Expandida</h3>
+                    <p>Espacios más amplios, zona de cardio renovada y estacionamiento.</p>
+                    <br>
+                    <a href="#" class="link-map">Ver en Mapa <i class="fas fa-arrow-right"></i></a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="inscribite" class="cta-section">
+        <div class="cta-content">
+            <h2>¿Listo para el cambio?</h2>
+            <p>No dejes para el lunes lo que puedes empezar hoy.</p>
+            <form class="signup-form">
+                <input type="text" placeholder="Nombre completo" required>
+                <input type="tel" placeholder="WhatsApp (Ej: 0981...)" required>
+                <button type="submit" class="btn-submit">QUIERO INFO</button>
+            </form>
+        </div>
+    </section>
+
+    <footer>
+        <p>&copy; 2026 Power Gym Mariano Roque Alonso.</p>
+        <div class="socials">
+            <a href="#"><i class="fab fa-instagram"></i></a>
+            <a href="#"><i class="fab fa-facebook"></i></a>
+        </div>
+    </footer>
+
+    <a href="https://wa.me/595900000000" class="whatsapp-float" target="_blank">
+        <i class="fab fa-whatsapp"></i>
+    </a>
+
+    <script src="script.js"></script>
+</body>
+</html>
