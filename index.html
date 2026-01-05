@@ -3,85 +3,80 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>POWER GYM | Elites en Entrenamiento</title>
+    <title>POWER GYM | Entrenamiento de Élite</title>
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <style>
         :root {
-            --primary: #D60000;    /* ROJO POWER */
-            --black: #080808;      /* NEGRO FONDO */
-            --card-bg: #151515;    /* GRIS OSCURO */
+            --primary: #D60000;
+            --black: #080808;
+            --card-bg: #111111;
             --white: #ffffff;
+            --whatsapp: #25D366;
         }
 
         * { margin: 0; padding: 0; box-sizing: border-box; }
-        body { font-family: 'Montserrat', sans-serif; background-color: var(--black); color: var(--white); line-height: 1.6; overflow-x: hidden; }
-        a { text-decoration: none; color: inherit; transition: 0.3s; }
-
-        /* HEADER */
-        header { background: rgba(0,0,0,0.95); padding: 20px 5%; position: fixed; width: 100%; top: 0; z-index: 1000; border-bottom: 3px solid var(--primary); display: flex; justify-content: space-between; align-items: center; }
-        .logo { font-size: 1.8rem; font-weight: 900; letter-spacing: 2px; }
+        body { font-family: 'Montserrat', sans-serif; background-color: var(--black); color: var(--white); line-height: 1.6; overflow-x: hidden; scroll-behavior: smooth; }
+        
+        header { 
+            background: rgba(0,0,0,0.95); padding: 15px 5%; position: fixed; width: 100%; top: 0; z-index: 1000; 
+            border-bottom: 3px solid var(--primary); display: flex; justify-content: space-between; align-items: center; 
+        }
+        .logo { font-size: 1.8rem; font-weight: 900; letter-spacing: 2px; text-transform: uppercase; }
         .logo span { color: var(--primary); }
-        nav ul { display: flex; gap: 20px; text-transform: uppercase; font-size: 0.8rem; font-weight: 700; }
+        nav ul { display: flex; gap: 20px; text-transform: uppercase; font-size: 0.8rem; font-weight: 700; list-style: none; }
+        nav ul li a { text-decoration: none; color: white; transition: 0.3s; }
         nav ul li a:hover { color: var(--primary); }
 
-        /* HERO */
-        .hero { height: 100vh; background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.9)), url('https://images.unsplash.com/photo-1540497077202-7c8a3999166f?q=80&w=1470&auto=format&fit=crop'); background-size: cover; background-position: center; display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center; padding: 0 20px; }
-        .hero h1 { font-size: 4rem; text-transform: uppercase; line-height: 1; margin-bottom: 20px; }
-        .hero h1 span { color: var(--primary); display: block; }
-        .btn { padding: 15px 40px; background: var(--primary); font-weight: 900; text-transform: uppercase; border-radius: 5px; box-shadow: 0 0 20px rgba(214, 0, 0, 0.4); cursor: pointer; }
-        .btn:hover { transform: scale(1.05); background: #ff0000; }
-
-        /* SECCIONES GENERALES */
-        .section { padding: 100px 5%; }
-        .title { text-align: center; font-size: 3rem; margin-bottom: 60px; text-transform: uppercase; font-weight: 900; }
-        .title span { color: var(--primary); }
-
-        /* SERVICIOS (GRID 3-2) */
-        .grid-servicios { display: flex; flex-wrap: wrap; justify-content: center; gap: 30px; }
-        .card-s { background: var(--card-bg); padding: 50px 30px; width: 350px; text-align: center; border-radius: 10px; border-top: 5px solid var(--primary); transition: 0.3s; }
-        .card-s:hover { transform: translateY(-10px); background: #1a1a1a; }
-        .card-s h3 { font-size: 1.5rem; margin-bottom: 15px; color: var(--primary); }
-
-        /* BANNER ASESORIAS */
-        .banner-asesoria { background: var(--primary); color: var(--black); padding: 80px 5%; text-align: center; }
-        .banner-asesoria h2 { font-size: 2.5rem; font-weight: 900; margin-bottom: 15px; }
-        .banner-asesoria p { font-size: 1.2rem; font-weight: 700; margin-bottom: 30px; }
-
-        /* SECCIÓN HERMANOS (TARJETAS CON FOTO DE FONDO) */
-        .grid-hermanos { display: flex; flex-wrap: wrap; justify-content: center; gap: 20px; }
-        .card-h { 
-            position: relative; width: 350px; height: 500px; overflow: hidden; border-radius: 15px; 
-            display: flex; flex-direction: column; justify-content: flex-end; padding: 30px;
-            background-size: cover; background-position: center;
+        .hero { 
+            height: 100vh; background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.9)), url('https://images.unsplash.com/photo-1534438327276-14e5300c3a48?q=80&w=1470&auto=format&fit=crop'); 
+            background-size: cover; background-position: center; display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center; padding: 0 20px; 
         }
-        /* Fotos random de entrenadores para ilustrar */
-        .h-diego { background-image: linear-gradient(to top, rgba(0,0,0,0.9), transparent), url('https://images.unsplash.com/photo-1567013127542-490d757e51fc?q=80&w=1374&auto=format&fit=crop'); }
-        .h-elias { background-image: linear-gradient(to top, rgba(0,0,0,0.9), transparent), url('https://images.unsplash.com/photo-1594381898411-846e7d193883?q=80&w=1374&auto=format&fit=crop'); }
-        .h-cesar { background-image: linear-gradient(to top, rgba(0,0,0,0.9), transparent), url('https://images.unsplash.com/photo-1491752289445-38d35826a47b?q=80&w=1470&auto=format&fit=crop'); }
+        .hero h1 { font-size: clamp(2.5rem, 8vw, 5rem); text-transform: uppercase; line-height: 1; margin-bottom: 20px; font-weight: 900; }
+        .hero h1 span { color: var(--primary); }
 
-        .card-h h3 { font-size: 2rem; color: var(--primary); z-index: 2; }
-        .card-h p { font-size: 0.9rem; z-index: 2; color: #eee; }
-        .card-h::before { content: ""; position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: 0px solid var(--primary); transition: 0.3s; z-index: 1; }
-        .card-h:hover::before { border: 8px solid var(--primary); }
+        .section { padding: 100px 8%; }
+        .title-container { text-align: center; margin-bottom: 60px; }
+        .title { font-size: 3rem; text-transform: uppercase; font-weight: 900; margin-bottom: 10px; }
+        .title span { color: var(--primary); }
+        .underline { width: 80px; height: 5px; background: var(--primary); margin: 0 auto; }
+
+        /* SERVICIOS */
+        .grid-servicios { display: flex; flex-wrap: wrap; justify-content: center; gap: 30px; }
+        .card-s { background: var(--card-bg); padding: 40px; width: 320px; text-align: center; border-radius: 15px; border: 1px solid #222; transition: 0.4s; }
+        .card-s i { font-size: 3rem; color: var(--primary); margin-bottom: 15px; }
+        .card-s:hover { border-color: var(--primary); transform: translateY(-10px); }
+
+        /* HERMANOS CHAVEZ CON ICONOS */
+        .grid-hermanos { display: flex; flex-wrap: wrap; justify-content: center; gap: 30px; }
+        .card-h { 
+            background: #151515; width: 300px; padding: 40px 30px; border-radius: 20px; text-align: center; border: 1px solid #333;
+        }
+        .card-h i.user-icon { font-size: 5rem; color: #444; margin-bottom: 20px; }
+        .h-name { font-size: 1.8rem; font-weight: 900; color: var(--primary); margin-bottom: 10px; }
+        .h-info { font-size: 0.95rem; color: #bbb; }
+
+        /* FORMULARIO */
+        .contact-section { background: #0a0a0a; border-top: 2px solid #222; }
+        .form-container { max-width: 600px; margin: 0 auto; background: #111; padding: 40px; border-radius: 10px; }
+        .form-group { margin-bottom: 20px; }
+        .form-group label { display: block; margin-bottom: 5px; font-weight: bold; color: var(--primary); }
+        .form-group input, .form-group textarea { width: 100%; padding: 12px; background: #222; border: 1px solid #333; color: white; border-radius: 5px; }
+        .btn-submit { width: 100%; padding: 15px; background: var(--primary); border: none; color: white; font-weight: 900; text-transform: uppercase; cursor: pointer; border-radius: 5px; }
 
         /* SUCURSALES */
-        .grid-sucursales { display: flex; flex-wrap: wrap; justify-content: center; gap: 40px; }
-        .sucursal { background: #111; padding: 40px; width: 45%; min-width: 320px; border-radius: 10px; border-left: 10px solid var(--primary); }
-        .sucursal h3 { font-size: 1.8rem; margin-bottom: 10px; }
-        .map-btn { display: inline-block; margin-top: 20px; padding: 10px 20px; border: 2px solid var(--primary); color: var(--primary); font-weight: 700; border-radius: 5px; }
-        .map-btn:hover { background: var(--primary); color: white; }
+        .sucursal-box { background: #111; padding: 40px; width: 480px; border-radius: 15px; border-top: 5px solid var(--primary); text-align: center; }
+        .btn-ws { display: inline-flex; align-items: center; justify-content: center; gap: 10px; background: var(--whatsapp); color: white; padding: 12px 25px; border-radius: 5px; font-weight: 900; text-decoration: none; margin-top: 15px; width: 100%; transition: 0.3s; }
+        .btn-ws:hover { background: #1ebe5d; transform: scale(1.02); }
+        .map-link { display: block; margin-top: 10px; color: #888; text-decoration: underline; font-size: 0.9rem; }
 
-        /* MOTIVACIÓN (Sección para deslizar más) */
-        .motivation { background: fixed center url('https://images.unsplash.com/photo-1534438327276-14e5300c3a48?q=80&w=1470&auto=format&fit=crop'); background-size: cover; padding: 150px 5%; text-align: center; }
-        .motivation h2 { font-size: 4rem; font-weight: 900; font-style: italic; color: white; text-shadow: 4px 4px 0px var(--primary); }
-
-        footer { padding: 50px; text-align: center; background: #000; border-top: 1px solid #222; }
-        footer a { color: var(--primary); font-size: 1.5rem; font-weight: 900; }
+        footer { padding: 60px 5%; background: #000; text-align: center; border-top: 2px solid #222; }
+        .social-links { margin-bottom: 30px; display: flex; justify-content: center; gap: 20px; }
+        .social-links a { font-size: 2rem; color: white; transition: 0.3s; }
+        .social-links a:hover { color: var(--primary); }
 
         @media (max-width: 768px) {
-            .hero h1 { font-size: 2.5rem; }
-            nav { display: none; }
-            .sucursal { width: 100%; }
+            .sucursal-box { width: 100%; }
         }
     </style>
 </head>
@@ -91,8 +86,8 @@
         <div class="logo">POWER <span>GYM</span></div>
         <nav>
             <ul>
-                <li><a href="#servicios">Servicios</a></li>
-                <li><a href="#equipo">Entrenadores</a></li>
+                <li><a href="#servicios">Disciplinas</a></li>
+                <li><a href="#equipo">Staff</a></li>
                 <li><a href="#sucursales">Sedes</a></li>
                 <li><a href="#contacto">Contacto</a></li>
             </ul>
@@ -100,81 +95,103 @@
     </header>
 
     <section class="hero">
-        <h1>SIN EXCUSAS <span>SIN LÍMITES</span></h1>
-        <p>El templo del entrenamiento en Mariano Roque Alonso y Remansito.</p>
-        <a href="#sucursales" class="btn">Empezar hoy</a>
+        <h1>SIN EXCUSAS<br><span>SIN LÍMITES</span></h1>
+        <p>Entrenamiento de élite en Mariano Roque Alonso y Remansito.</p>
     </section>
 
     <section id="servicios" class="section">
-        <h2 class="title">Nuestras <span>Disciplinas</span></h2>
+        <div class="title-container">
+            <h2 class="title">Nuestras <span>Disciplinas</span></h2>
+            <div class="underline"></div>
+        </div>
         <div class="grid-servicios">
-            <div class="card-s"><h3>AMBIENTE TOP</h3><p>Climatizado, amplio y con la mejor música.</p></div>
-            <div class="card-s"><h3>MUSCULACIÓN</h3><p>Fuerza pura con equipos de alta gama.</p></div>
-            <div class="card-s"><h3>TAEKWONDO</h3><p>Disciplina marcial para todas las edades.</p></div>
-            <div class="card-s"><h3>KICK BOXING</h3><p>Intensidad de combate para tu cardio.</p></div>
-            <div class="card-s"><h3>DANZA ÁRABE</h3><p>Ritmo, técnica y expresión única.</p></div>
+            <div class="card-s"><i class="fas fa-star"></i><h3>AMBIENTE TOP</h3><p>Espacio totalmente climatizado y equipado.</p></div>
+            <div class="card-s"><i class="fas fa-dumbbell"></i><h3>MUSCULACIÓN</h3><p>Máquinas modernas para todos los niveles.</p></div>
+            <div class="card-s"><i class="fas fa-user-ninja"></i><h3>TAEKWONDO</h3><p>Técnica y disciplina marcial profesional.</p></div>
+            <div class="card-s"><i class="fas fa-fist-raised"></i><h3>KICK BOXING</h3><p>Intensidad de combate y cardio extremo.</p></div>
+            <div class="card-s"><i class="fas fa-music"></i><h3>DANZA ÁRABE</h3><p>Flexibilidad, ritmo y control corporal.</p></div>
         </div>
     </section>
 
-    <section class="motivation">
-        <h2>EL DOLOR ES TEMPORAL,<br>LA GLORIA ES PARA SIEMPRE</h2>
-    </section>
-
-    <section id="equipo" class="section">
-        <h2 class="title">LIDERADO POR <span>PROFESIONALES</span></h2>
+    <section id="equipo" class="section" style="background: #050505;">
+        <div class="title-container">
+            <h2 class="title">Los <span>Hermanos Chávez</span></h2>
+            <div class="underline"></div>
+        </div>
         <div class="grid-hermanos">
-            <div class="card-h h-diego">
-                <h3>DIEGO CHÁVEZ</h3>
-                <p>Especialista en musculación y preparación física de alto rendimiento. Mentor en Casa Central.</p>
+            <div class="card-h">
+                <i class="fas fa-user-circle user-icon"></i>
+                <div class="h-name">DIEGO</div>
+                <div class="h-info">Especialista en musculación y asesoramiento personalizado en Casa Central.</div>
             </div>
-            <div class="card-h h-elias">
-                <h3>ELÍAS CHÁVEZ</h3>
-                <p>Experto en artes marciales y acondicionamiento dinámico. Instructor en Casa Central.</p>
+            <div class="card-h">
+                <i class="fas fa-user-circle user-icon"></i>
+                <div class="h-name">ELÍAS</div>
+                <div class="h-info">Instructor de entrenamiento físico y musculación en Casa Central.</div>
             </div>
-            <div class="card-h h-cesar">
-                <h3>CÉSAR CHÁVEZ</h3>
-                <p>Líder de la sucursal Remansito, enfocado en transformar vidas a través del entrenamiento duro.</p>
+            <div class="card-h">
+                <i class="fas fa-user-circle user-icon"></i>
+                <div class="h-name">CÉSAR</div>
+                <div class="h-info">Instructor principal y encargado de la Sucursal Remansito.</div>
             </div>
         </div>
-    </section>
-
-    <section id="asesorias" class="banner-asesoria">
-        <h2>ASESORÍAS PERSONALIZADAS</h2>
-        <p>¿Buscas un cambio radical? Entrena directamente con los hermanos Chávez.</p>
-        <a href="https://wa.me/595974978876" class="btn" style="background: black; color: var(--primary);">Hablar con el dueño</a>
     </section>
 
     <section id="sucursales" class="section">
-        <h2 class="title">Nuestras <span>Sedes</span></h2>
-        <div class="grid-sucursales">
-            <div class="sucursal">
+        <div class="title-container">
+            <h2 class="title">Nuestras <span>Sedes</span></h2>
+            <div class="underline"></div>
+        </div>
+        <div style="display:flex; flex-wrap:wrap; justify-content:center; gap:30px;">
+            <div class="sucursal-box">
                 <h3>CASA CENTRAL</h3>
                 <p>📍 Paseo de Fátima, Mariano Roque Alonso</p>
-                <p>⏰ Lun-Vie: 06:00 - 22:00 | Sáb: 09:00 - 17:00</p>
-                <a href="https://maps.app.goo.gl/G4VPtmGZb1K8s2DP8" target="_blank" class="map-btn">ABRIR MAPA</a>
+                <p>🕒 Lun-Vie: 06:00-22:00 | Sáb: 09:00-17:00</p>
+                <a href="https://wa.me/595974978876" class="btn-ws"><i class="fab fa-whatsapp"></i> CONTACTAR CENTRAL</a>
+                <a href="https://maps.app.goo.gl/G4VPtmGZb1K8s2DP8" target="_blank" class="map-link">Ver ubicación en Google Maps</a>
             </div>
-            <div class="sucursal">
+            <div class="sucursal-box">
                 <h3>REMANSITO</h3>
                 <p>📍 Remansito, Paraguay</p>
-                <p>⏰ Lun-Vie: 08:00 - 21:00</p>
-                <a href="https://maps.app.goo.gl/X6wTxJMKWGXguG8F8" target="_blank" class="map-btn">ABRIR MAPA</a>
+                <p>🕒 Lun-Vie: 08:00-21:00</p>
+                <a href="https://wa.me/595981921538" class="btn-ws"><i class="fab fa-whatsapp"></i> CONTACTAR REMANSITO</a>
+                <a href="https://maps.app.goo.gl/X6wTxJMKWGXguG8F8" target="_blank" class="map-link">Ver ubicación en Google Maps</a>
             </div>
         </div>
     </section>
 
-    <footer id="contacto">
-        <p>POWER GYM PARAGUAY © 2026</p>
-        <br>
-        <a href="tel:+595974978876">+595 974 978876</a>
+    <section id="contacto" class="section contact-section">
+        <div class="title-container">
+            <h2 class="title">Escribinos a <span>Power Gym</span></h2>
+            <div class="underline"></div>
+        </div>
+        <div class="form-container">
+            <form action="#">
+                <div class="form-group">
+                    <label>Nombre Completo</label>
+                    <input type="text" placeholder="Tu nombre...">
+                </div>
+                <div class="form-group">
+                    <label>WhatsApp</label>
+                    <input type="text" placeholder="Tu número...">
+                </div>
+                <div class="form-group">
+                    <label>Mensaje o Interés</label>
+                    <textarea rows="4" placeholder="¿En qué disciplina estás interesado?"></textarea>
+                </div>
+                <button type="submit" class="btn-submit">Enviar Mensaje</button>
+            </form>
+        </div>
+    </section>
+
+    <footer>
+        <div class="logo" style="margin-bottom: 20px;">POWER <span>GYM</span></div>
+        <div class="social-links">
+            <a href="https://www.facebook.com/share/1AgWyvVEN2/?mibextid=wwXIfr" target="_blank"><i class="fab fa-facebook"></i></a>
+            <a href="https://www.instagram.com/power_gym_remanso?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw==" target="_blank"><i class="fab fa-instagram"></i></a>
+        </div>
+        <p>© 2026 Power Gym Paraguay - Todos los derechos reservados.</p>
     </footer>
 
-    <script>
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function (e) {
-                e.preventDefault();
-                document.querySelector(this.getAttribute('href')).scrollIntoView({ behavior: 'smooth' });
-            });
-        });
-    </script>
 </body>
 </html>
