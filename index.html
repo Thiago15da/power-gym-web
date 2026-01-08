@@ -466,34 +466,58 @@
         </div>
     </section>
 
-    <script>
+   <script>
+        // 1. Lógica del Menú Hamburguesa
         const hamburger = document.querySelector(".hamburger");
         const navMenu = document.querySelector(".nav-menu");
         const navLinks = document.querySelectorAll(".nav-link");
 
-        hamburger.addEventListener("click", () => {
-            hamburger.classList.toggle("active");
-            navMenu.classList.toggle("active");
-        });
-
-        navLinks.forEach(link => {
-            link.addEventListener("click", () => {
-                hamburger.classList.remove("active");
-                navMenu.classList.remove("active");
+        if (hamburger && navMenu) {
+            hamburger.addEventListener("click", () => {
+                hamburger.classList.toggle("active");
+                navMenu.classList.toggle("active");
             });
-        });
-        // Enviar Formulario a WhatsApp
-document.getElementById('inscripcionForm').addEventListener('submit', function(e) {
-    e.preventDefault(); // ESTO EVITA QUE SE RECARGUE O VAYA A FORMSPREE
-    
-    // ... captura los datos ...
-    
-    // ESTO ABRE WHATSAPP
-    window.open(url, '_blank');
-});
-    </script>
 
+            navLinks.forEach(link => {
+                link.addEventListener("click", () => {
+                    hamburger.classList.remove("active");
+                    navMenu.classList.remove("active");
+                });
+            });
+        }
+
+        // 2. Lógica del Formulario a WhatsApp
+        const form = document.getElementById('inscripcionForm');
+
+        if (form) {
+            form.addEventListener('submit', function(e) {
+                e.preventDefault(); // Evita recargar la página
+
+                // CAPTURA LOS DATOS (Usando los "name" de tu HTML actual)
+                // Usamos ?.value || "" para evitar errores si el campo está vacío
+                const nombre = document.querySelector('input[name="nombre"]').value;
+                const telefono = document.querySelector('input[name="telefono"]').value;
+                const interes = document.querySelector('select[name="interes"]').value;
+                const mensajeExtra = document.querySelector('textarea[name="mensaje"]').value;
+
+                // NÚMERO DE TELÉFONO (¡CAMBIAR POR EL TUYO!)
+                const numeroGym = "595974978876"; 
+
+                // ARMADO DEL MENSAJE
+                const texto = `Hola Power Gym! Soy ${nombre}. Me interesa: *${interes}*. Mi número es ${telefono}. Consulta: ${mensajeExtra}`;
+
+                // CREACIÓN DEL LINK
+                const url = `https://wa.me/${numeroGym}?text=${encodeURIComponent(texto)}`;
+
+                // ABRIR WHATSAPP
+                window.open(url, '_blank');
+            });
+        } else {
+            console.error("El formulario no fue encontrado. Verifica el ID.");
+        }
+    </script>
 </body>
 </html>
+
 
 
