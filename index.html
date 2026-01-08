@@ -4,10 +4,15 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Power Gym</title>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@500;700&family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+    
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     
     <style>
-        /* --- RESET Y ESTILOS GENERALES (TEMA OSCURO) --- */
+        /* --- RESET Y ESTILOS GENERALES --- */
         * {
             margin: 0;
             padding: 0;
@@ -15,21 +20,29 @@
         }
 
         body {
-            font-family: 'Arial', sans-serif;
-            background-color: #0a0a0a; /* Fondo casi negro */
+            /* Usamos Roboto para el texto normal (párrafos) para que se lea fácil */
+            font-family: 'Roboto', sans-serif;
+            background-color: #0a0a0a;
             color: #ffffff;
             line-height: 1.6;
         }
 
+        /* --- TIPOGRAFÍA DEL ESLOGAN Y TÍTULOS --- */
+        h1, h2, h3, .nav-logo, .btn-submit, .btn-whatsapp, .btn-map {
+            /* Usamos Oswald para títulos para dar el efecto "fuerte" */
+            font-family: 'Oswald', sans-serif; 
+            text-transform: uppercase;
+        }
+
         /* --- BARRA DE NAVEGACIÓN --- */
         header {
-            background-color: #000;
+            background-color: rgba(0, 0, 0, 0.95); /* Un poco transparente */
             padding: 1rem;
             position: fixed;
             width: 100%;
             top: 0;
             z-index: 1000;
-            border-bottom: 2px solid #ff0000; /* Línea roja del diseño */
+            border-bottom: 2px solid #ff0000;
         }
 
         .navbar {
@@ -41,14 +54,14 @@
         }
 
         .nav-logo {
-            font-size: 1.5rem;
-            font-weight: bold;
+            font-size: 1.8rem; /* Más grande */
+            font-weight: 700;
             color: white;
             text-decoration: none;
-            text-transform: uppercase;
+            letter-spacing: 1px;
         }
 
-        .nav-logo span { color: #ff0000; } /* POWER en rojo si quieres */
+        .nav-logo span { color: #ff0000; }
 
         .nav-menu {
             display: flex;
@@ -60,8 +73,10 @@
             color: white;
             text-decoration: none;
             font-weight: bold;
-            font-size: 0.9rem;
+            font-size: 1rem;
             text-transform: uppercase;
+            font-family: 'Oswald', sans-serif;
+            letter-spacing: 1px;
             transition: color 0.3s;
         }
 
@@ -82,6 +97,36 @@
             transition: all 0.3s ease;
         }
 
+        /* --- SECCIÓN HERO (INICIO) CON IMAGEN DE FONDO --- */
+        #inicio {
+            /* 1. La imagen de fondo */
+            /* He puesto una de internet. Si tienes una tuya, pon: url('tu-foto.jpg') */
+            background-image: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url('https://images.unsplash.com/photo-1534438327276-14e5300c3a48?q=80&w=1470&auto=format&fit=crop');
+            background-size: cover;     /* Hace que la imagen cubra todo */
+            background-position: center; /* Centra la imagen */
+            background-attachment: fixed; /* Efecto parallax (opcional) */
+            
+            height: 100vh; /* Ocupa toda la altura de la pantalla */
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding-top: 0; /* Quitamos padding extra porque usamos flex center */
+        }
+
+        #inicio h1 {
+            font-size: 3.5rem; /* Eslogan gigante */
+            margin-bottom: 10px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.8);
+            letter-spacing: 2px;
+        }
+        
+        #inicio p {
+            font-size: 1.2rem;
+            font-weight: 300;
+        }
+
         /* --- SECCIONES GENERALES --- */
         section {
             padding: 80px 20px;
@@ -91,27 +136,26 @@
 
         h2 {
             text-align: center;
-            font-size: 2rem;
-            text-transform: uppercase;
-            margin-bottom: 40px;
+            font-size: 2.5rem;
+            margin-bottom: 50px;
             position: relative;
+            color: #fff;
         }
 
-        /* Subrayado rojo debajo de los títulos */
         h2::after {
             content: '';
             display: block;
-            width: 50px;
-            height: 4px;
+            width: 60px;
+            height: 5px;
             background: #ff0000;
             margin: 10px auto 0;
         }
 
-        /* --- TARJETAS DE SERVICIOS (GRILLA) --- */
+        /* --- TARJETAS --- */
         .services-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); /* Responsivo */
-            gap: 20px;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 25px;
         }
 
         .service-card {
@@ -119,13 +163,14 @@
             border: 1px solid #333;
             padding: 30px;
             text-align: center;
-            border-radius: 8px;
+            border-radius: 4px; /* Bordes menos redondeados para verse más rudo */
             transition: transform 0.3s;
         }
 
         .service-card:hover {
             border-color: #ff0000;
             transform: translateY(-5px);
+            background-color: #161616;
         }
 
         .service-card i {
@@ -135,95 +180,110 @@
         }
 
         .service-card h3 {
-            font-size: 1.2rem;
+            font-size: 1.4rem;
             margin-bottom: 10px;
-            text-transform: uppercase;
         }
 
-        .service-card p {
-            font-size: 0.9rem;
-            color: #ccc;
-        }
-
-        /* --- SEDES (ALINEADAS) --- */
+        /* --- SEDES --- */
         .sedes-container {
             display: flex;
             flex-wrap: wrap;
             justify-content: center;
-            gap: 20px;
+            gap: 30px;
         }
 
         .sede-card {
             background-color: #111;
-            border-left: 4px solid #ff0000; /* Borde rojo a la izquierda como la imagen */
-            padding: 20px;
-            border-radius: 8px;
-            flex: 1 1 300px; /* Crecen igual, mínimo 300px */
+            border-left: 5px solid #ff0000;
+            padding: 25px;
+            flex: 1 1 300px;
             max-width: 500px;
             display: flex;
             flex-direction: column;
-            justify-content: space-between; /* Alinea el botón al fondo */
+            gap: 15px;
         }
 
         .sede-card h3 {
-            margin-bottom: 10px;
+            font-size: 1.5rem;
             display: flex;
             align-items: center;
             gap: 10px;
         }
 
-        .sede-card p {
-            margin-bottom: 20px;
+        .sede-info {
             color: #ccc;
+            font-size: 1rem;
+        }
+
+        /* Botones de sedes */
+        .botones-sede {
+            display: flex;
+            gap: 10px;
+            margin-top: auto;
         }
 
         .btn-whatsapp {
-            display: block;
-            background-color: #25d366; /* Verde WhatsApp */
+            background-color: #25d366;
             color: white;
             text-align: center;
-            padding: 12px;
+            padding: 10px;
             text-decoration: none;
             font-weight: bold;
-            border-radius: 5px;
-            text-transform: uppercase;
-            margin-top: auto; /* Empuja el botón abajo */
+            border-radius: 4px;
+            flex: 1; /* Ocupa espacio */
         }
+
+        .btn-map {
+            background-color: #333;
+            color: white;
+            text-align: center;
+            padding: 10px;
+            text-decoration: none;
+            font-weight: bold;
+            border-radius: 4px;
+            border: 1px solid #555;
+            flex: 1;
+        }
+        
+        .btn-map:hover { background-color: #555; }
 
         /* --- FORMULARIO --- */
         .form-container {
             max-width: 600px;
             margin: 0 auto;
             background: #111;
-            padding: 30px;
-            border-radius: 10px;
+            padding: 40px;
             border: 1px solid #333;
+            border-top: 4px solid #ff0000;
         }
 
         form {
             display: flex;
             flex-direction: column;
-            gap: 15px;
+            gap: 20px;
         }
 
         label {
             font-weight: bold;
-            margin-bottom: 5px;
-            display: block;
+            font-family: 'Oswald', sans-serif;
+            letter-spacing: 0.5px;
+            color: #ccc;
         }
 
         input, select, textarea {
             width: 100%;
-            padding: 12px;
-            background: #222;
+            padding: 15px;
+            background: #1a1a1a;
             border: 1px solid #444;
             color: white;
-            border-radius: 5px;
+            border-radius: 4px;
+            font-family: 'Roboto', sans-serif;
         }
 
         input:focus, select:focus, textarea:focus {
             outline: none;
             border-color: #ff0000;
+            background: #222;
         }
 
         button.btn-submit {
@@ -231,19 +291,20 @@
             color: white;
             padding: 15px;
             border: none;
-            font-weight: bold;
-            text-transform: uppercase;
+            font-size: 1.1rem;
             cursor: pointer;
-            border-radius: 5px;
-            margin-top: 10px;
+            border-radius: 4px;
+            letter-spacing: 1px;
+            transition: background 0.3s;
         }
+        
+        button.btn-submit:hover { background-color: #cc0000; }
 
-        /* --- MEDIA QUERIES (CELULAR) --- */
+        /* --- MEDIA QUERIES --- */
         @media (max-width: 768px) {
-            .hamburger {
-                display: block;
-            }
-
+            #inicio h1 { font-size: 2.5rem; } /* Ajuste de letra en móvil */
+            
+            .hamburger { display: block; }
             .hamburger.active .bar:nth-child(2) { opacity: 0; }
             .hamburger.active .bar:nth-child(1) { transform: translateY(8px) rotate(45deg); }
             .hamburger.active .bar:nth-child(3) { transform: translateY(-8px) rotate(-45deg); }
@@ -251,27 +312,20 @@
             .nav-menu {
                 position: fixed;
                 left: -100%;
-                top: 60px; /* Ajustar según altura del header */
+                top: 60px;
                 flex-direction: column;
                 background-color: #000;
                 width: 100%;
-                height: 100vh; /* Ocupa toda la pantalla */
+                height: 100vh;
                 text-align: center;
                 transition: 0.3s;
                 padding-top: 50px;
+                border-top: 1px solid #333;
             }
 
-            .nav-menu.active {
-                left: 0;
-            }
-
-            .nav-menu li {
-                margin: 20px 0;
-            }
-            
-            .nav-link {
-                font-size: 1.5rem; /* Letra más grande en móvil */
-            }
+            .nav-menu.active { left: 0; }
+            .nav-menu li { margin: 20px 0; }
+            .nav-link { font-size: 1.5rem; }
         }
     </style>
 </head>
@@ -296,15 +350,14 @@
         </nav>
     </header>
 
-    <section id="inicio" style="text-align:center; padding-top: 150px;">
-        <h1>TU TRANSFORMACIÓN COMIENZA AQUÍ</h1>
-        <p>Entrena con los mejores profesionales.</p>
+    <section id="inicio">
+        <h1>Tu Transformación <br> Comienza Aquí</h1>
+        <p>Entrena con pasión. Entrena con los mejores.</p>
     </section>
 
     <section id="disciplinas">
         <h2>Áreas de Entrenamiento</h2>
         <div class="services-grid">
-            
             <div class="service-card">
                 <i class="fas fa-users"></i>
                 <h3>Ambiente Top</h3>
@@ -330,20 +383,21 @@
                 <h3>Danza Árabe</h3>
                 <p>Expresión artística y flexibilidad.</p>
             </div>
-
             <div class="service-card">
-                <i class="fas fa-apple-alt"></i> <h3>Nutrición</h3>
-                <p>Planes alimenticios para potenciar tus resultados.</p>
+                <i class="fas fa-apple-alt"></i>
+                <h3>Nutrición</h3>
+                <p>Planes alimenticios a medida.</p>
             </div>
             <div class="service-card">
-                <i class="fas fa-heartbeat"></i> <h3>Rehabilitación Deportiva</h3>
-                <p>Recuperación de lesiones y fortalecimiento específico.</p>
+                <i class="fas fa-heartbeat"></i>
+                <h3>Rehabilitación</h3>
+                <p>Recuperación de lesiones.</p>
             </div>
             <div class="service-card">
-                <i class="fas fa-user-check"></i> <h3>Asesorías Personalizadas</h3>
-                <p>Entrenamiento 1 a 1 enfocado en tus objetivos.</p>
+                <i class="fas fa-user-check"></i>
+                <h3>Asesorías</h3>
+                <p>Entrenamiento 1 a 1.</p>
             </div>
-
         </div>
     </section>
 
@@ -354,17 +408,27 @@
             <div class="sede-card">
                 <div>
                     <h3><i class="fas fa-map-marker-alt" style="color:#ff0000;"></i> CASA CENTRAL</h3>
-                    <p>Ruta Transchaco - MRA</p>
-                    </div>
-                <a href="#" class="btn-whatsapp"><i class="fab fa-whatsapp"></i> Info Central</a>
+                    <p class="sede-info">Ruta Transchaco - MRA</p>
+                </div>
+                <div class="botones-sede">
+                    <a href="#" class="btn-whatsapp"><i class="fab fa-whatsapp"></i> Info</a>
+                    <a href="PONER_LINK_MAPS_AQUI" target="_blank" class="btn-map">
+                        <i class="fas fa-location-arrow"></i> Mapa
+                    </a>
+                </div>
             </div>
 
             <div class="sede-card">
                 <div>
                     <h3><i class="fas fa-building" style="color:#ff0000;"></i> REMANSITO</h3>
-                    <p>Avda. Principal - Remansito</p>
-                    </div>
-                <a href="#" class="btn-whatsapp"><i class="fab fa-whatsapp"></i> Info Remansito</a>
+                    <p class="sede-info">Avda. Principal - Remansito</p>
+                </div>
+                <div class="botones-sede">
+                    <a href="#" class="btn-whatsapp"><i class="fab fa-whatsapp"></i> Info</a>
+                    <a href="PONER_LINK_MAPS_AQUI" target="_blank" class="btn-map">
+                        <i class="fas fa-location-arrow"></i> Mapa
+                    </a>
+                </div>
             </div>
 
         </div>
@@ -376,10 +440,10 @@
             <form action="https://formspree.io/f/TU_CODIGO" method="POST">
                 
                 <label>Nombre y Apellido:</label>
-                <input type="text" name="nombre" placeholder="Tu nombre" required>
+                <input type="text" name="nombre" placeholder="Ej. Juan Pérez" required>
                 
                 <label>Teléfono:</label>
-                <input type="tel" name="telefono" placeholder="Tu celular" required>
+                <input type="tel" name="telefono" placeholder="Ej. 0981..." required>
 
                 <label>Me interesa:</label>
                 <select name="interes" required>
@@ -395,9 +459,9 @@
                 </select>
                 
                 <label>Mensaje:</label>
-                <textarea name="mensaje" rows="4" placeholder="¿Tienes alguna duda específica?"></textarea>
+                <textarea name="mensaje" rows="4" placeholder="¿Tienes alguna duda?"></textarea>
                 
-                <button type="submit" class="btn-submit">Enviar Consulta</button>
+                <button type="submit" class="btn-submit">ENVIAR CONSULTA</button>
             </form>
         </div>
     </section>
@@ -405,17 +469,13 @@
     <script>
         const hamburger = document.querySelector(".hamburger");
         const navMenu = document.querySelector(".nav-menu");
-        
-        // Seleccionamos TODOS los enlaces dentro del menú
         const navLinks = document.querySelectorAll(".nav-link");
 
-        // 1. Abrir/Cerrar menú al tocar la hamburguesa
         hamburger.addEventListener("click", () => {
             hamburger.classList.toggle("active");
             navMenu.classList.toggle("active");
         });
 
-        // 2. CERRAR MENÚ AL TOCAR CUALQUIER ENLACE
         navLinks.forEach(link => {
             link.addEventListener("click", () => {
                 hamburger.classList.remove("active");
