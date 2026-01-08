@@ -437,7 +437,7 @@
     <section id="contacto">
         <h2>Inscribite / Contacto</h2>
         <div class="form-container">
-            <form action="https://formspree.io/f/TU_CODIGO" method="POST">
+            <form id="inscripcionForm">
                 
                 <label>Nombre y Apellido:</label>
                 <input type="text" name="nombre" placeholder="Ej. Juan Pérez" required>
@@ -482,8 +482,18 @@
                 navMenu.classList.remove("active");
             });
         });
+        // Enviar Formulario a WhatsApp
+document.getElementById('inscripcionForm').addEventListener('submit', function(e) {
+    e.preventDefault(); // ESTO EVITA QUE SE RECARGUE O VAYA A FORMSPREE
+    
+    // ... captura los datos ...
+    
+    // ESTO ABRE WHATSAPP
+    window.open(url, '_blank');
+});
     </script>
 
 </body>
 </html>
+
 
