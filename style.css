@@ -1,1 +1,85 @@
+/* ============================================================
+   POWER GYM — Custom styles complementary to Tailwind CDN
+   ============================================================ */
 
+:root {
+  --brand:   #ff0000;
+  --gym-900: #0a0a0a;
+  --gym-800: #111111;
+  --gym-700: #161616;
+  --gym-600: #1a1a1a;
+  --gym-500: #333333;
+  --wa:      #25d366;
+}
+
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 4.5rem;
+}
+
+/* ── Scrollbar ── */
+::-webkit-scrollbar { width: 6px; }
+::-webkit-scrollbar-track { background: var(--gym-800); }
+::-webkit-scrollbar-thumb { background: var(--brand); }
+::-webkit-scrollbar-thumb:hover { background: #cc0000; }
+
+/* ── Form dark overrides ── */
+input::placeholder,
+textarea::placeholder { color: #555; }
+select option { background-color: var(--gym-600); color: #fff; }
+
+/* ── Discipline card bottom-line animation ── */
+.disc-card { position: relative; overflow: hidden; }
+.disc-card::after {
+  content: '';
+  position: absolute;
+  bottom: 0; left: 0;
+  width: 0; height: 2px;
+  background: var(--brand);
+  transition: width .45s ease;
+}
+.disc-card:hover::after { width: 100%; }
+
+/* ── Hero parallax (desktop only) ── */
+@media (min-width: 769px) {
+  .hero-parallax { background-attachment: fixed; }
+}
+
+/* ── Fade-up animation ── */
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(28px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+.anim-fade-up  { animation: fadeUp .7s ease both; }
+.anim-delay-1  { animation-delay: .15s; }
+.anim-delay-2  { animation-delay: .30s; }
+.anim-delay-3  { animation-delay: .45s; }
+
+/* ── Pulse glow for NEW badge ── */
+@keyframes pulseRed {
+  0%, 100% { box-shadow: 0 0 0 0 rgba(255,0,0,.45); }
+  50%       { box-shadow: 0 0 0 8px rgba(255,0,0,0); }
+}
+.pulse-red { animation: pulseRed 2s infinite; }
+
+/* ── Plan card featured glow ── */
+.plan-featured { box-shadow: 0 0 0 2px #ff0000, 0 0 30px rgba(255,0,0,.15); }
+
+/* ── Schedule table ── */
+.sched-table tr:last-child td { border-bottom: none; }
+
+/* ── Martial arts level badge ── */
+.art-level {
+  display: inline-block;
+  font-size: .65rem;
+  font-family: 'Oswald', sans-serif;
+  text-transform: uppercase;
+  letter-spacing: .1em;
+  padding: 2px 8px;
+  border: 1px solid var(--brand);
+  color: var(--brand);
+}
+
+/* ── Sticky WhatsApp FAB ── */
+.wa-fab { transition: transform .25s ease, background-color .25s ease; }
+.wa-fab:hover { transform: scale(1.12); }
